@@ -11,28 +11,32 @@
   }
 </script>
 
-<header class="page-header">
-  <div class="container">
-    <section id="top" class="animate-up">
+<header class="page-header bg-gray-700 text-white p-4">
+  <div class="max-w-4xl">
+    <section id="top" class="animate-up flex justify-between items-center border-b border-b-gray-600 pb-8">
       <h2 class="sr-only">Homepage</h2>
       <img id="logo" src="/images/logo.svg" alt="Logo" />
-      <span id="notification">
+      <span id="notification" class="flex gap-2">
         <img src="/images/alert-octagon.svg" alt="Alerta" />
 
         {#if freeHours <= 0 }
           Você não tem horas livres
         {:else}
-          Você tem {freeHours} horas livres no seu dia
+          Você tem {freeHours} {freeHours == 1 ? 'hora livre' : 'horas livres'} no seu dia
         {/if}
      
       </span>
-      <a href="/profile" id="avatar-profile">
-        <p>{profile.name} <span>Ver perfil</span></p>
-        <img src="{profile.avatar}" alt="{profile.name}" />
-      </a>
+      <button
+        id="avatar-profile"
+        class="flex items-center gap-4"
+      >
+        <div class="grid text-end">
+          <strong>{profile.name}</strong>
+          <span class="text-xs">Ver perfil</span>
+        </div>
+        <img class="w-14 border-2 border-orange-400 rounded-full" src="{profile.avatar}" alt="{profile.name}" />
+      <button>
     </section>
-
-    <div class="separator"></div>
 
     <section id="summary" class="animate-up delay-1">
       <h2 class="sr-only">Sumário</h2>
